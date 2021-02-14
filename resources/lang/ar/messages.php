@@ -17,5 +17,11 @@ return [
     'name must be unique' => 'اسم العرض يجب ان يكون غير مقرر',
     'the price must be number' => 'السعر يجب ان يكون رقم',
     'the details field is required' => 'حقل البيانات مطلوب',
-
+    'Add Your offer' => 'اضافه امرك الجديد',
+    'add offer' => 'اضافه عرض',
+    'offer price' => 'سعر العرض',
+    'offer details' => 'تفاصيل العرض',
+    'save offer'    => 'حفظ العرض',
+    'saved successfully' => ' تم حفظ العرض بنجاح',
+    'price is required' => 'السعر مطلوب',
 ];

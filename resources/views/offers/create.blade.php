@@ -67,10 +67,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -88,7 +85,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Add Your offer
+                    {{__('messages.Add Your offer')}}
                 </div>
             </div>
             @if(Session::has('success'))
@@ -99,29 +96,29 @@
             <form method="post" action="{{route('offers.store')}}">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">offer name</label>
-                    <input type="text" class="form-control" name="name" placeholder="offer name">
+                    <label for="exampleInputEmail1">{{__('messages.add offer')}}</label>
+                    <input type="text" class="form-control" name="name" >
                     @error('name')
                     <small  class="form-text text-danger">{{$message}}</small>
                     @enderror
 
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">offer price</label>
-                    <input type="number" class="form-control" name="price" placeholder="offer price">
+                    <label for="exampleInputPassword1">{{__('messages.offer price')}}</label>
+                    <input type="number" class="form-control" name="price" >
                     @error('price')
                     <small  class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">offer details</label>
-                    <input type="text" class="form-control" name="details" placeholder="offer details">
+                    <label for="exampleInputPassword1">{{__('messages.offer details')}}</label>
+                    <input type="text" class="form-control" name="details" >
                     @error('details')
                     <small  class="form-text text-danger">{{$message}}</small>
                     @enderror
 
                 </div>
-                <button type="submit" class="btn btn-primary">save offer</button>
+                <button type="submit" class="btn btn-primary">{{__('messages.save offer')}}</button>
             </form>
     </body>
 </html>

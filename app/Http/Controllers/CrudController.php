@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,6 +22,7 @@ class CrudController extends Controller
     {
         return Offer::get();
     }
+
     /*
     public function store()
     {
@@ -36,29 +38,30 @@ class CrudController extends Controller
         return view('offers.create'); // in the view we write the folder name and the file inside the file
     }
 
-    public function store(Request $request)
+    public function store(OfferRequest $request)
     {
         // validate data before insert into to database
 
-        $rules = $this->getRules();
-        $messages = $this->getMessages();
+        //$rules = $this->getRules();
+        // $messages = $this->getMessages();
 
-        $validator = Validator::make($request->all(), $rules, $messages);
+        //$validator = Validator::make($request->all(), $rules, $messages);
 
-        if ($validator -> fails())
-        {
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
+        //if ($validator -> fails())
+        //{
+        // return redirect()->back()->withErrors($validator)->withInput($request->all());
+        //}
 
         //insert
         Offer::create([
-           'name' => $request ->name,
-           'price' => $request->price,
-           'details'=> $request->details
+            'name' => $request->name,
+            'price' => $request->price,
+            'details' => $request->details
         ]);
-        return redirect()->back()->with(['success'=> 'saved successfully']);
+        return redirect()->back()->with(['success' => __('messages.saved successfully')]);
     }
-
+}
+/*
     protected function getRules()
     {
         return [
@@ -78,3 +81,4 @@ class CrudController extends Controller
         ];
     }
 }
+*/
