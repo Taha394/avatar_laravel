@@ -6,6 +6,7 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use LaravelLocalization;
 
 class CrudController extends Controller
 {
@@ -54,11 +55,23 @@ class CrudController extends Controller
 
         //insert
         Offer::create([
-            'name' => $request->name,
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
             'price' => $request->price,
-            'details' => $request->details
+            'details_ar' => $request->details_ar,
+            'details_en' => $request->details_en,
+
         ]);
         return redirect()->back()->with(['success' => __('messages.saved successfully')]);
+    }
+
+    public function getAllOffers()
+    {
+       // $offers = offer::select('id', 'name_ar','price', 'details_ar')->get();
+        $offers = Offer::select('id','price', 'name_'.LaravelLocalization::getCurrentLocale(). ' as name',
+            'details_'.LaravelLocalization::getCurrentLocale(). ' as details'
+        )->get();
+        return view('offers.all', compact('offers'));
     }
 }
 /*
@@ -82,3 +95,5 @@ class CrudController extends Controller
     }
 }
 */
+
+

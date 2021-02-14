@@ -19,9 +19,15 @@ return [
     'the details field is required' => 'حقل البيانات مطلوب',
     'Add Your offer' => 'اضافه امرك الجديد',
     'add offer' => 'اضافه عرض',
+    'offer name ar' => 'اسم العرض بالعربيه',
+    'offer name en' => 'اسم العرض بالانجليزيه',
     'offer price' => 'سعر العرض',
-    'offer details' => 'تفاصيل العرض',
+    'offer details ar' => 'تفاصيل العرض بالعربيه',
+    'offer details en' => 'تفاصيل العرض بالانجليزيه',
     'save offer'    => 'حفظ العرض',
     'saved successfully' => ' تم حفظ العرض بنجاح',
     'price is required' => 'السعر مطلوب',
+    'offer name' => 'اسم العرض',
+    'offer details' => 'تفاصيل العرض',
+
 ];

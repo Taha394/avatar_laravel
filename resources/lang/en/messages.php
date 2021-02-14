@@ -19,9 +19,15 @@ return [
     'the details field is required' => 'Details field is required',
     'Add Your offer' => 'Add Your offer',
     'add offer' => 'Add Offer',
+    'offer name ar' => 'offer name in arabic',
+    'offer name en' => 'offer name in english',
     'offer price' => 'Offer Price',
-    'offer details' => 'Offer Details',
+    'offer details ar' => 'Offer Details in arabic',
+    'offer details en' => 'Offer Details in english',
     'save offer'    => 'Save Offer',
     'saved successfully' => 'Offer Saved Successfully',
     'price is required' => 'The Price Is Required',
+    'offer name' => 'Offer Name',
+    'offer details' => 'Offer Details',
+
 ];
