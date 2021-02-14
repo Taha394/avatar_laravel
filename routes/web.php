@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +35,14 @@ Route::get('/redirect/{service}', 'SocialController@redirect');
 Route::get('/callback/{service}', 'SocialController@callback');
 Route::get('fillable', 'CrudController@getOffers');
 
-Route::group(['prefix' => 'offers'], function (){
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' =>  'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'], function (){
    //Route::get('store', 'CrudController@store');
+    Route::group(['prefix' => 'offers'], function (){
+        Route::get('create', 'CrudController@create');
+        Route::post('store', 'CrudController@store')->name('offers.store');
 
-    Route::get('create', 'CrudController@create');
-    Route::post('store', 'CrudController@store')->name('offers.store');
+    });
+
 });
 
 
