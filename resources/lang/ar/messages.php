@@ -29,5 +29,9 @@ return [
     'price is required' => 'السعر مطلوب',
     'offer name' => 'اسم العرض',
     'offer details' => 'تفاصيل العرض',
+    'control'   => 'التحكم',
+    'update' => 'تعديل',
+    'Edit Your offer' =>'تعديل العرض ',
+    'Updated successfully' => 'تم التحديث بنجاح',
 
 ];

@@ -29,5 +29,9 @@ return [
     'price is required' => 'The Price Is Required',
     'offer name' => 'Offer Name',
     'offer details' => 'Offer Details',
+    'control' => 'Control',
+    'update' => 'Edit',
+    'Edit Your offer' => 'Edit Your offer',
+    'Updated successfully' => 'Updated successfully'
 
 ];
