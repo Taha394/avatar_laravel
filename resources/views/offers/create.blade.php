@@ -93,7 +93,7 @@
                 {{Session::get('success')}}
             </div>
             @endif
-            <form method="post" action="{{route('offers.store')}}">
+            <form method="post" action="{{route('offers.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">{{__('messages.offer name ar')}}</label>
@@ -127,6 +127,14 @@
                     <label for="exampleInputPassword1">{{__('messages.offer details en')}}</label>
                     <input type="text" class="form-control" name="details_en" >
                     @error('details_en')
+                    <small  class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">{{__('messages.choose photo')}}</label>
+                    <input type="file" class="form-control" name="photo" >
+                    @error('photo')
                     <small  class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>

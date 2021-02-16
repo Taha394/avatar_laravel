@@ -43,11 +43,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' =>  'loc
 
         Route::get('edit/{offer_id}', 'CrudController@editOffer');
         Route::post('update/{offer_id}', 'CrudController@updateOffer')->name('offers.update');
+        Route::get('delete/{offer_id}', 'CrudController@deleteOffer')->name('offers.delete');
 
-        Route::get('all', 'CrudController@getAllOffers');
+        Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
 
     });
-
+   Route::get('youtube', 'Viewer@getVideo');
 });
 
+################ Begin Ajax Routes ####################
+
+
+
+Route::group(['prefix' => 'ajax-offers'], function (){
+   Route::get('create', 'OfferController@create');
+    Route::post('store', 'OfferController@store')->name('ajax.offers.store');
+    Route::get('all', 'OfferController@all')->name('ajax.offers.all');
+});
+
+
+################ End Ajax Routes ####################
 

@@ -33,5 +33,9 @@ return [
     'update' => 'تعديل',
     'Edit Your offer' =>'تعديل العرض ',
     'Updated successfully' => 'تم التحديث بنجاح',
-
+    'choose photo' => 'اختر صوره العرض',
+    'choose photo1' => ' صوره العرض',
+    'deleted' => ' حذف ',
+    'the offer is not exists' => 'العرض غير موجود',
+    'the offer deleted' => 'لقد تم حذف العرض بنجاح',
 ];

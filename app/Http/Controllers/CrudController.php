@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Traits\OfferTraits;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use LaravelLocalization;
 
 class CrudController extends Controller
 {
+    use OfferTraits;
     /**
      * Create a new controller instance.
      *
@@ -53,6 +55,10 @@ class CrudController extends Controller
         // return redirect()->back()->withErrors($validator)->withInput($request->all());
         //}
 
+
+
+        $file_name = $this->saveImage($request->photo, 'images/offers');
+
         //insert
         Offer::create([
             'name_ar' => $request->name_ar,
@@ -60,6 +66,7 @@ class CrudController extends Controller
             'price' => $request->price,
             'details_ar' => $request->details_ar,
             'details_en' => $request->details_en,
+            'photo' => $request->$file_name,
 
         ]);
         return redirect()->back()->with(['success' => __('messages.saved successfully')]);
@@ -89,6 +96,16 @@ class CrudController extends Controller
 
     }
 
+    public function deleteOffer($offer_id)
+    {
+        //check if offer-Id is exists
+        $offer = Offer::find($offer_id);  // $offer = offer::where('id','$offer_id')->first();
+        if (!$offer)
+            return redirect()->back()->with(['error' => __('messages.the offer is not exists')]);
+        $offer ->delete();
+        return redirect()->route('offers.all', $offer_id)->with(['success' => __('messages.the offer deleted')]);
+    }
+
     public function updateOffer(OfferRequest $request, $offer_id)
     {
         // validation
@@ -109,6 +126,9 @@ class CrudController extends Controller
         ]);
 */
     }
+
+
+
 }
 /*
     protected function getRules()

@@ -7,6 +7,10 @@ use Illuminate\Foundation\Http\FormRequest;
 class OfferRequest extends FormRequest
 {
     /**
+     * @var mixed
+     */
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -29,6 +33,7 @@ class OfferRequest extends FormRequest
             'price' => 'required|numeric',
             'details_ar' => 'required',
             'details_en' => 'required',
+            'photo' => 'required|mimes:png,jpg,jpeg',
 
         ];
     }
@@ -43,6 +48,8 @@ class OfferRequest extends FormRequest
             'price.required' => __('messages.price is required'),
             'details_ar.required' => __('messages.the details field is required'),
             'details_en.required' => __('messages.the details field is required'),
+            'photo.required' =>  'صوره العرض مطلوب',
+            'photo.mimes' =>  'صوره غير صالحة',
 
         ];
     }

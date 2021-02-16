@@ -32,6 +32,12 @@ return [
     'control' => 'Control',
     'update' => 'Edit',
     'Edit Your offer' => 'Edit Your offer',
-    'Updated successfully' => 'Updated successfully'
+    'Updated successfully' => 'Updated successfully',
+    'choose photo' => 'Choose Offer Photo',
+    'choose photo1' => 'offer photo',
+    'deleted' => ' Delete',
+    'the offer is not exists' => 'The Offer Is Not Exists',
+    'the offer deleted'=> 'Offer Has Been Deleted Successfully'
+
 
 ];
