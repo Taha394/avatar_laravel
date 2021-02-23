@@ -37,7 +37,9 @@ return [
     'choose photo1' => 'offer photo',
     'deleted' => ' Delete',
     'the offer is not exists' => 'The Offer Is Not Exists',
-    'the offer deleted'=> 'Offer Has Been Deleted Successfully'
+    'the offer deleted'=> 'Offer Has Been Deleted Successfully',
+    'deleted ajax' => 'Delete Ajax',
+    'edit ajax'=> 'edit ajax',
 
 
 ];

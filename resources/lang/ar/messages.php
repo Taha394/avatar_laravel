@@ -38,4 +38,6 @@ return [
     'deleted' => ' حذف ',
     'the offer is not exists' => 'العرض غير موجود',
     'the offer deleted' => 'لقد تم حذف العرض بنجاح',
+    'deleted ajax' => 'حذف اجاكس',
+    'edit ajax'=> 'تعديل اجاكس',
 ];
