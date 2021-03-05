@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="alert alert-success" id="success_msg" style="display: none;">
-        تم التحديث بنجاح
+        تم <التحديث></التحديث> بنجاح
     </div>
     <div class="flex-center position-ref full-height">
         <div class="content">

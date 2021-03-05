@@ -67,3 +67,10 @@ Route::group(['prefix' => 'ajax-offers'], function (){
 
 ################ End Ajax Routes ####################
 
+################ Authentication Guards ##############
+Route::get('adult', 'Auth\CustomAuthController@adult')-> middleware('CheckAge');
+    
+
+############ End Authentication Guards ##############
+
+
