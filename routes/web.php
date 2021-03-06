@@ -27,8 +27,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', function () {
-   return 'dashboard';
-});
+   return 'you are not allowed here';
+})->name('not.adult');
 
 Route::get('/redirect/{service}', 'SocialController@redirect');
 
@@ -48,7 +48,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' =>  'loc
         Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
 
     });
-   Route::get('youtube', 'Viewer@getVideo');
+   Route::get('youtube', 'Viewer@getVideo') ->middleware('auth');
 });
 
 ################ Begin Ajax Routes ####################
@@ -68,7 +68,10 @@ Route::group(['prefix' => 'ajax-offers'], function (){
 ################ End Ajax Routes ####################
 
 ################ Authentication Guards ##############
-Route::get('adult', 'Auth\CustomAuthController@adult')-> middleware('CheckAge');
+Route::group(['middleware' => 'CheckAge' , 'namespace'=> 'Auth'], function() {
+    Route::get('adult', 'CustomAuthController@adult')->name('adult');
+});
+
     
 
 ############ End Authentication Guards ##############
