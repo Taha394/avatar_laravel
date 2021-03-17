@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -76,4 +77,10 @@ Route::group(['middleware' => 'CheckAge' , 'namespace'=> 'Auth'], function() {
 
 ############ End Authentication Guards ##############
 
+############ Begain Realations #################
+Route::get('has-one', 'RealtionController@hasOneRealtion');
+Route::get('has-one-reverse', 'RealtionController@hasOneRealtionReverse');
+Route::get('get-user-has-phone', 'RealtionController@getUserHasPhone');
+Route::get('get-user-not-has-phone', 'RealtionController@getUserNotHasPhone');
 
+############ End Realations ####################
