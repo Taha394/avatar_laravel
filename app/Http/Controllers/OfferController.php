@@ -14,7 +14,7 @@ class OfferController extends Controller
     public function create()
     {
         // view form to add the offer
-      return  view('ajaxoffers.create');
+    return  view('ajaxoffers.create');
     }
 
 

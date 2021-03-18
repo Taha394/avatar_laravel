@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">{{__('messages.offer name ar')}}</label>
                     <input type="text" class="form-control" name="name_ar"
-                            >
+                        >
                     <small id="name_ar_error" class="form-text text-danger"></small>
                 </div>
 
@@ -43,21 +43,21 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">{{__('messages.offer name en')}}</label>
                     <input type="text" class="form-control" name="name_en"
-                           >
+                        >
                     <small id="name_en_error" class="form-text text-danger"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">{{__('messages.offer price')}}</label>
                     <input type="text" class="form-control" name="price"
-                           >
+                        >
                     <small id="price_error" class="form-text text-danger"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">{{__('messages.offer details ar')}}</label>
                     <input type="text" class="form-control" name="details_ar"
-                           >
+                        >
                     <small id="details_ar_error" class="form-text text-danger"></small>
                 </div>
 
@@ -72,7 +72,7 @@
 
 
             </div>
-         </div>
+        </div>
     </div>
 </div>
     @stop
@@ -80,6 +80,12 @@
     <script>
         $(document).on('click','#save_offer', function (e){
             e.preventDefault();
+            $('#photo_error').text('');
+            $('#name_ar_error').text('');
+            $('#name_en_error').text('');
+            $('#price_error').text('');
+            $('#details_ar_error').text('');
+            $('#details_en_error').text('');
             var formData = new FormData($('#offerForm')[0]);
             $.ajax({
                 type: 'post',
@@ -94,11 +100,17 @@
                         $('#success_msg').show();
                     }
 
-                }, error: function (reject){
+                },
+                error: function (reject){
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    });
                 }
             });
         });
 
     </script>
     @stop
+
 
