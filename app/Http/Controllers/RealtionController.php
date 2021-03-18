@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
+use App\Models\Hospital;
 use App\Models\Phone;
 use App\User;
 use Illuminate\Http\Request;
@@ -46,4 +48,64 @@ class RealtionController extends Controller
         $user = User::whereDoesntHave('phone')->get();
         return $user;
     }
+
+
+    ########### Begin one to many realtionship##########
+    public function getHospitalDoctors()
+    {
+        $hospital = Hospital::find(1);
+        $hospital = Hospital::with('doctors')->find(1);
+        $doctors = $hospital->doctors;
+        $doctors = Doctor::find(3);
+        return $doctors->hospital;
+        foreach($doctors as $doctor)
+        {
+            echo $doctor-> name . '<br>';
+            echo $doctor-> title .'<br>';
+        }
+    }
+    public function hospitals()
+    {
+
+        $hospitals = Hospital::select('id', 'name', 'address')->get();
+        return view('doctors.hospitals', compact('hospitals'));
+    }
+
+    public function doctors($hospital_id)
+    {
+
+        $hospital = Hospital::find($hospital_id);
+        $doctors = $hospital->doctors;
+        return view('doctors.doctors', compact('doctors'));
+    }
+
+    public function hospitalHasDoctors()
+    {
+        $hospitals = Hospital::whereHas('doctors')->get();
+        return $hospitals;
+    }
+    public function hospitalHasDoctorsMale()
+    {
+        $hospitals = Hospital::with('doctors')->whereHas('doctors', function($q){
+            $q ->where('gender',1);
+        })->get();
+    }
+
+    public function hospitalNotHasDoctors()
+    {
+        return $hospitals = Hospital::whereDoesntHave('doctors')->get();
+    }
+
+    public function deleteHospital($hospital_id)
+    {
+        $hospital = Hospital::find($hospital_id);
+        if(!$hospital)
+        return abort('404');
+
+        //delete doctors in this hospital
+        $hospital->doctors()->delete();
+        $hospital->delete();
+        return redirect()->route('hospital.all')->with('message', 'The Hospital Has been deleted');
+    }
+    ########### End one to many realtionship############
 }

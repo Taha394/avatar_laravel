@@ -83,4 +83,18 @@ Route::get('has-one-reverse', 'RealtionController@hasOneRealtionReverse');
 Route::get('get-user-has-phone', 'RealtionController@getUserHasPhone');
 Route::get('get-user-not-has-phone', 'RealtionController@getUserNotHasPhone');
 
+########### Begin one to many realtionship ######
+Route::get('one-to-many', 'RealtionController@getHospitalDoctors');
+Route::get('hospitals','RealtionController@hospitals') -> name('hospital.all');
+Route::get('doctors/{hospital_id}','RealtionController@doctors')-> name('hospital.doctors');
+Route::get('hospitals/{hospial_id}', 'RealtionController@deleteHospital')->name('hospital.delete');
+
+
+Route::get('hospital-has-doctors','RealtionController@hospitalHasDoctors');
+Route::get('hospital-has-doctors-male','RealtionController@hospitalHasDoctorsMale');
+Route::get('hospital-not-has-doctors','RealtionController@hospitalNotHasDoctors');
+
+
+########### End one to many realtionship ########
+
 ############ End Realations ####################
