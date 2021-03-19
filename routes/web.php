@@ -89,12 +89,19 @@ Route::get('hospitals','RealtionController@hospitals') -> name('hospital.all');
 Route::get('doctors/{hospital_id}','RealtionController@doctors')-> name('hospital.doctors');
 Route::get('hospitals/{hospial_id}', 'RealtionController@deleteHospital')->name('hospital.delete');
 
-
 Route::get('hospital-has-doctors','RealtionController@hospitalHasDoctors');
 Route::get('hospital-has-doctors-male','RealtionController@hospitalHasDoctorsMale');
 Route::get('hospital-not-has-doctors','RealtionController@hospitalNotHasDoctors');
 
-
 ########### End one to many realtionship ########
+
+########### Begain many to many realtionship ########
+// Route::get('doctors-services', 'RealtionController@getDoctorsServices');
+Route::get('services-doctors', 'RealtionController@getServicesDoctors');
+Route::get('doctors-services/{doctor_id}', 'RealtionController@getDoctorsServicesById')->name('doctors.services');
+Route::post('save-services-doctors', 'RealtionController@saveServicesToDoctor')->name('save.doctors.services');
+
+
+########### End many to many realtionship ########
 
 ############ End Realations ####################

@@ -29,7 +29,7 @@
                                 <th scope="row">{{$doctor -> id}}</th>
                                 <td>{{$doctor -> name}}</td>
                                 <td>{{$doctor -> title}}</td>
-                                {{-- <td><a href="{{route('doctors.services',$doctor -> id)}}" class="btn btn-success">عرض الخدمات </a></td> --}}
+                                <td><a href="{{route('doctors.services',$doctor -> id)}}" class="btn btn-success">عرض الخدمات </a></td>
                             </tr>
                         @endforeach
                     @endif

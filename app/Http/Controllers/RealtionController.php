@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\Phone;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -108,4 +109,39 @@ class RealtionController extends Controller
         return redirect()->route('hospital.all')->with('message', 'The Hospital Has been deleted');
     }
     ########### End one to many realtionship############
+
+    ########### Begain many to many realtionship#########
+
+    public function getDoctorsServices()
+    {
+        $doctor = Doctor::find(5);
+        return $doctor-> services;
+    }
+    public function getServicesDoctors()
+    {
+        return $doctors = Service::with('doctors')->find(1);
+    }
+
+    public function getDoctorsServicesById($doctor_id)
+    {
+        $doctor = Doctor::find($doctor_id);
+        $services = $doctor->services;
+        $doctors = Doctor::select('id', 'name')->get();
+        $allServices = Service::select('id', 'name')->get();
+
+        return view('doctors.services', compact('services', 'doctors', 'allServices'));
+    }
+
+    public function saveServicesToDoctor(Request $request)
+    {
+        
+        $doctor = Doctor::find($request->doctor_id);
+        if(!$doctor)
+            return abort('404');
+            // $doctor->services()->attach($request -> servicesIds);
+            $doctor->services()->syncWithoutDetaching($request->servicesIds);
+            return 'success';
+    }
+    ########### End many to many realtionship############
+    
 }
