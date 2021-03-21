@@ -30,9 +30,9 @@ class CrudController extends Controller
     public function store()
     {
         Offer::create([
-           'name' => 'taha',
-            'price' => '5000',
-            'details' => 'welcome form details'
+        'name' => 'taha',
+        'price' => '5000',
+        'details' => 'welcome form details'
         ]);
     }
     */
@@ -74,11 +74,18 @@ class CrudController extends Controller
 
     public function getAllOffers()
     {
-       // $offers = offer::select('id', 'name_ar','price', 'details_ar')->get();
-        $offers = Offer::select('id','price', 'name_'.LaravelLocalization::getCurrentLocale(). ' as name',
+    //    // $offers = offer::select('id', 'name_ar','price', 'details_ar')->get();
+    //     $offers = Offer::select('id','price', 'name_'.LaravelLocalization::getCurrentLocale(). ' as name',
+    //         'details_'.LaravelLocalization::getCurrentLocale(). ' as details'
+    //     )->get(); //return collection of all result
+    //     return view('offers.all', compact('offers'));
+
+        ############## paginate results ##################
+            $offers = Offer::select('id','price', 'name_'.LaravelLocalization::getCurrentLocale(). ' as name',
             'details_'.LaravelLocalization::getCurrentLocale(). ' as details'
-        )->get();
-        return view('offers.all', compact('offers'));
+        )->paginate(PAGINATION_COUNT); //return collection of all result
+        // return view('offers.all', compact('offers'));
+        return view('offers.paginations', compact('offers'));
     }
 
 
@@ -125,6 +132,12 @@ class CrudController extends Controller
             'price'   => $request ->price,
         ]);
 */
+    }
+
+    public function getAllInactiveOffers()
+    {
+        // where whereNull whereNotNull whereIn
+        return Offer::inactive()->get();
     }
 
 

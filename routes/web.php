@@ -4,6 +4,8 @@ use App\User;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+define('PAGINATION_COUNT', 6);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +30,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', function () {
-   return 'you are not allowed here';
+return 'you are not allowed here';
 })->name('not.adult');
 
 Route::get('/redirect/{service}', 'SocialController@redirect');
@@ -47,17 +49,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' =>  'loc
         Route::get('delete/{offer_id}', 'CrudController@deleteOffer')->name('offers.delete');
 
         Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
-
+        Route::get('get-all-inactive-offers', 'CrudController@getAllInactiveOffers');
     });
-   Route::get('youtube', 'Viewer@getVideo') ->middleware('auth');
+Route::get('youtube', 'Viewer@getVideo') ->middleware('auth');
 });
 
 ################ Begin Ajax Routes ####################
 
-
-
 Route::group(['prefix' => 'ajax-offers'], function (){
-   Route::get('create', 'OfferController@create');
+Route::get('create', 'OfferController@create');
     Route::post('store', 'OfferController@store')->name('ajax.offers.store');
     Route::get('all', 'OfferController@all')->name('ajax.offers.all');
     Route::post('delete', 'OfferController@delete')->name('ajax.offers.delete');
