@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Scopes\OfferScope;
 use App\Traits\OfferTraits;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -137,7 +138,12 @@ class CrudController extends Controller
     public function getAllInactiveOffers()
     {
         // where whereNull whereNotNull whereIn
-        return Offer::inactive()->get();
+        // return Offer::inactive()->get();
+
+        // I'm Using Here global Scope
+        return Offer::get();
+        // How To Remove Global Scope
+        return $offer = Offer::withoutGlobalScope(OfferScope::class)->get();
     }
 
 
