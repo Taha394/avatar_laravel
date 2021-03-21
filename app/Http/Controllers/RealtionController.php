@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Doctor;
 use App\Models\Hospital;
+use App\Models\Patient;
 use App\Models\Phone;
 use App\Models\Service;
 use App\User;
@@ -141,6 +143,24 @@ class RealtionController extends Controller
             // $doctor->services()->attach($request -> servicesIds);
             $doctor->services()->syncWithoutDetaching($request->servicesIds);
             return 'success';
+    }
+    public function hasOneThrough()
+    {
+        $patient = Patient::find(1);
+        return $patient -> doctor;
+
+    }
+
+    public function hasManyThrough()
+    {
+        $country = Country::find(1);
+        return $country -> doctors;
+    }
+
+    public function manyCountry(){
+        
+        return $country = Country::with('hospitals')->find(1);
+        return $country->hospitals;
     }
     ########### End many to many realtionship############
     

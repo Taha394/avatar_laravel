@@ -104,4 +104,11 @@ Route::post('save-services-doctors', 'RealtionController@saveServicesToDoctor')-
 
 ########### End many to many realtionship ########
 
+############### Has One Through ################
+Route::get('has-one-through', 'RealtionController@hasOneThrough');
+Route::get('has-many-through', 'RealtionController@hasManyThrough');
+Route::get('has-many', 'RealtionController@manyCountry');
+
+
+############## End Has One Through #############
 ############ End Realations ####################
