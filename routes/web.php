@@ -112,3 +112,11 @@ Route::get('has-many', 'RealtionController@manyCountry');
 
 ############## End Has One Through #############
 ############ End Realations ####################
+
+############ Begain Accessors & Mutators ##############
+Route::get('Accessors', 'RealtionController@getDoctors');
+Route::get('Access-offers', 'OfferController@getOffers');
+
+
+############ End Accessors & Mutators #################
+

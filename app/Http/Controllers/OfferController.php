@@ -102,4 +102,8 @@ class OfferController extends Controller
             'msg'   => 'تم التحديث بنجاح',
         ]);
     }
+    public function getOffers()
+    {
+        return $offers = Offer::select('id', 'name_ar', 'status')->get();
+    }
 }

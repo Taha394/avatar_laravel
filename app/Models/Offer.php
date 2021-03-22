@@ -27,5 +27,11 @@ class Offer extends Model
         return $query->where('status', 1);
     }
     ############## local scopes ################
+    
+    ############## Accessors ###################
+    public function getStatusAttribute($val)
+    {
+        return $val === 1 ? 'active' : 'notActive';
+    }
 
 }
